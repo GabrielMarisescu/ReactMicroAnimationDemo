@@ -8,15 +8,21 @@ function showAnimations({
   showAnimations,
 }) {
   return (
-    <div className=' flex justify-evenly mt-32'>
-      <button onClick={backwardAnimation}>
-        <BackArrow />
-      </button>
-      {showAnimations()}
-      <button onClick={forwardAnimation}>
-        <ForwardArrow />
-      </button>
-    </div>
+    <>
+      <div className='flex justify-center mt-28 '>
+        <div className='p-8  bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 w-auto h-auto '>
+          <div className='flex'>
+            <button onClick={backwardAnimation}>
+              <BackArrow />
+            </button>
+            {showAnimations()}
+            <button onClick={forwardAnimation}>
+              <ForwardArrow />
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 

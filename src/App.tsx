@@ -8,12 +8,12 @@ import ShowAnimations from './components/ShowAnimations';
 import Repeat from './animations/Repeat';
 import RepeatBackwards from './animations/RepeatBackwards';
 import WhileHover from './animations/WhileHover';
+import PresentationComponent from './components/PresentationComponent';
 
 function App() {
   const [count, setCount] = useState(0);
   const [animationCount, setAnimationCount] = useState(0);
-  const [animationComponents, setAnimationComponents] =
-    useState<JSX.Element[]>();
+  const [animationComponents, setAnimationComponents] = useState<any>();
 
   //JSX.Element[]
   const forwardAnimation = (): void => {
@@ -39,12 +39,14 @@ function App() {
       <RepeatBackwards />,
       <WhileHover />,
     ];
+
     setAnimationComponents(animations);
     //if currentselection is more than animations.lengt, show error component
   }, []);
 
   return (
     <>
+      <PresentationComponent />
       <Refresh onClick={() => setCount(count + 1)} />
       <ShowAnimations
         key={count}

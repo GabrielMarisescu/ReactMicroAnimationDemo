@@ -9,7 +9,7 @@ function RepeatBackwards() {
           width: 150,
           height: 150,
           borderRadius: 30,
-          backgroundColor: 'black',
+          backgroundImage: 'linear-gradient(to right, #7b2ff7, #f107a3)',
         }}
         animate={{ rotate: 360 }}
         transition={{
