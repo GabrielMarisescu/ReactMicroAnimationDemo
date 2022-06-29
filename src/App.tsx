@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import Tween from './animations/Tween';
 import Spring from './animations/Spring';
 import './index.scss';
-import { Refresh } from '../components/Refresh';
-import ShowAnimations from '../components/showAnimations';
+import { Refresh } from './components/Refresh';
+import ShowAnimations from './components/showAnimations';
 
 function App() {
   const [count, setCount] = useState(0);
