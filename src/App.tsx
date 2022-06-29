@@ -10,7 +10,8 @@ import Repeat from './animations/Repeat';
 function App() {
   const [count, setCount] = useState(0);
   const [animationCount, setAnimationCount] = useState(0);
-  const [animationComponents, setAnimationComponents] = useState<any>();
+  const [animationComponents, setAnimationComponents] =
+    useState<JSX.Element[]>();
 
   //JSX.Element[]
   const forwardAnimation = (): void => {
@@ -31,6 +32,7 @@ function App() {
   useEffect(() => {
     const animations = [<Tween />, <Spring />, <Repeat />];
     setAnimationComponents(animations);
+    console.log(animations);
     //if currentselection is more than animations.lengt, show error component
   }, []);
 

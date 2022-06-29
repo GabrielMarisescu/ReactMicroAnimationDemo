@@ -8,12 +8,12 @@ function showAnimations({
   showAnimations,
 }) {
   return (
-    <div className=' flex justify-between mt-48'>
-      <button onClick={backwardAnimation} className='ml-36'>
+    <div className=' flex justify-evenly mt-32'>
+      <button onClick={backwardAnimation}>
         <BackArrow />
       </button>
       {showAnimations()}
-      <button onClick={forwardAnimation} className='mr-36'>
+      <button onClick={forwardAnimation}>
         <ForwardArrow />
       </button>
     </div>
