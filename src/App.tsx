@@ -5,6 +5,7 @@ import Spring from './animations/Spring';
 import './index.scss';
 import { Refresh } from './components/Refresh';
 import ShowAnimations from './components/showAnimations';
+import Repeat from './animations/Repeat';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -28,7 +29,7 @@ function App() {
   };
 
   useEffect(() => {
-    const animations = [<Tween />, <Spring />];
+    const animations = [<Tween />, <Spring />, <Repeat />];
     setAnimationComponents(animations);
     //if currentselection is more than animations.lengt, show error component
   }, []);
