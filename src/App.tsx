@@ -6,6 +6,8 @@ import './index.scss';
 import { Refresh } from './components/Refresh';
 import ShowAnimations from './components/ShowAnimations';
 import Repeat from './animations/Repeat';
+import RepeatBackwards from './animations/RepeatBackwards';
+import WhileHover from './animations/WhileHover';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -30,9 +32,14 @@ function App() {
   };
 
   useEffect(() => {
-    const animations = [<Tween />, <Spring />, <Repeat />];
+    const animations = [
+      <Tween />,
+      <Spring />,
+      <Repeat />,
+      <RepeatBackwards />,
+      <WhileHover />,
+    ];
     setAnimationComponents(animations);
-    console.log(animations);
     //if currentselection is more than animations.lengt, show error component
   }, []);
 
