@@ -9,9 +9,9 @@ import ShowAnimations from './components/showAnimations';
 function App() {
   const [count, setCount] = useState(0);
   const [animationCount, setAnimationCount] = useState(0);
-  const [animationComponents, setAnimationComponents] =
-    useState<JSX.Element[]>();
+  const [animationComponents, setAnimationComponents] = useState<any>();
 
+  //JSX.Element[]
   const forwardAnimation = (): void => {
     setAnimationCount((prevData) => prevData + 1);
   };
