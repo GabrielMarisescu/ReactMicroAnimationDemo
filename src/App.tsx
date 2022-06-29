@@ -13,9 +13,9 @@ import PresentationComponent from './components/PresentationComponent';
 function App() {
   const [count, setCount] = useState(0);
   const [animationCount, setAnimationCount] = useState(0);
-  const [animationComponents, setAnimationComponents] = useState<any>();
+  const [animationComponents, setAnimationComponents] =
+    useState<JSX.Element[]>();
 
-  //JSX.Element[]
   const forwardAnimation = (): void => {
     setAnimationCount((prevData) => prevData + 1);
   };
