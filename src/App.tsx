@@ -8,7 +8,7 @@ import ShowAnimations from './components/ShowAnimations';
 import Repeat from './animations/Repeat';
 import RepeatBackwards from './animations/RepeatBackwards';
 import WhileHover from './animations/WhileHover';
-import PresentationComponent from './components/PresentationComponent';
+import Presentation from './components/Presentation';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -19,17 +19,24 @@ function App() {
   const forwardAnimation = (): void => {
     setAnimationCount((prevData) => prevData + 1);
   };
+
   const backwardAnimation = (): void => {
     setAnimationCount((prevData) => prevData - 1);
   };
 
-  const showAnimations = () => {
+  const showAnimations = (): JSX.Element | void => {
     if (animationComponents && animationComponents[animationCount]) {
       return animationComponents[animationCount];
-    } else {
-      console.log('no animation in that slot');
     }
   };
+
+  useEffect(() => {
+    if (animationCount === -1) {
+      setAnimationCount(animationComponents!.length - 1);
+    } else if (animationCount + 1 > animationComponents!?.length) {
+      setAnimationCount(0);
+    }
+  }, [animationCount]);
 
   useEffect(() => {
     const animations = [
@@ -39,14 +46,13 @@ function App() {
       <RepeatBackwards />,
       <WhileHover />,
     ];
-
     setAnimationComponents(animations);
     //if currentselection is more than animations.lengt, show error component
   }, []);
 
   return (
     <>
-      <PresentationComponent />
+      <Presentation />
       <Refresh onClick={() => setCount(count + 1)} />
       <ShowAnimations
         key={count}
