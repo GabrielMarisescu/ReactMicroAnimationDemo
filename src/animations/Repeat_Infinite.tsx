@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 
-function RepeatBackwards() {
+function Repeat_Infinite() {
   return (
     <div>
       <motion.div
@@ -12,14 +12,10 @@ function RepeatBackwards() {
           backgroundImage: 'linear-gradient(to right, #7b2ff7, #f107a3)',
         }}
         animate={{ rotate: 360 }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          repeatType: 'reverse',
-        }}
+        transition={{ ease: 'linear', duration: 2, repeat: Infinity }}
       />
     </div>
   );
 }
 
-export default RepeatBackwards;
+export default Repeat_Infinite;

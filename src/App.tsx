@@ -5,16 +5,17 @@ import Spring from './animations/Spring';
 import './index.scss';
 import { Refresh } from './components/Refresh';
 import ShowAnimations from './components/ShowAnimations';
-import Repeat from './animations/Repeat';
-import RepeatBackwards from './animations/RepeatBackwards';
-import WhileHover from './animations/WhileHover';
+import RepeatInfinite from './animations/Repeat_Infinite';
+import RepeatBackwards from './animations/Repeat_Backwards';
+import WhileHover from './animations/While_Hover';
 import Presentation from './components/Presentation';
 
 function App() {
   const [count, setCount] = useState(0);
   const [animationCount, setAnimationCount] = useState(0);
   const [animationComponents, setAnimationComponents] =
-    useState<JSX.Element[]>();
+    useState<(() => JSX.Element)[]>();
+  const [currentAnimationName, setCurrentAnimationName] = useState<string>();
 
   const forwardAnimation = (): void => {
     setAnimationCount((prevData) => prevData + 1);
@@ -26,10 +27,13 @@ function App() {
 
   const showAnimations = (): JSX.Element | void => {
     if (animationComponents && animationComponents[animationCount]) {
-      return animationComponents[animationCount];
+      setCurrentAnimationName(
+        animationComponents[animationCount].name.replace('_', ' ')
+      );
+      return React.createElement(animationComponents[animationCount]);
     }
   };
-
+  //handles forward and backwards errors
   useEffect(() => {
     if (animationCount === -1) {
       setAnimationCount(animationComponents!.length - 1);
@@ -40,12 +44,13 @@ function App() {
 
   useEffect(() => {
     const animations = [
-      <Tween />,
-      <Spring />,
-      <Repeat />,
-      <RepeatBackwards />,
-      <WhileHover />,
+      Tween,
+      Spring,
+      RepeatInfinite,
+      RepeatBackwards,
+      WhileHover,
     ];
+
     setAnimationComponents(animations);
     //if currentselection is more than animations.lengt, show error component
   }, []);
@@ -54,6 +59,9 @@ function App() {
     <>
       <Presentation />
       <Refresh onClick={() => setCount(count + 1)} />
+      <div className='flex justify-center mt-10 text-2xl font-semibold'>
+        {currentAnimationName}
+      </div>
       <ShowAnimations
         key={count}
         forwardAnimation={forwardAnimation}

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 
-function WhileHover() {
+function Repeat_Backwards() {
   return (
     <div>
       <motion.div
@@ -11,10 +11,15 @@ function WhileHover() {
           borderRadius: 30,
           backgroundImage: 'linear-gradient(to right, #7b2ff7, #f107a3)',
         }}
-        whileHover={{ scale: 0.8 }}
+        animate={{ rotate: 360 }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          repeatType: 'reverse',
+        }}
       />
     </div>
   );
 }
 
-export default WhileHover;
+export default Repeat_Backwards;

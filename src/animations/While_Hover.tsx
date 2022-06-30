@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 
-function Spring() {
+function While_Hover() {
   return (
     <div>
       <motion.div
@@ -11,11 +11,10 @@ function Spring() {
           borderRadius: 30,
           backgroundImage: 'linear-gradient(to right, #7b2ff7, #f107a3)',
         }}
-        animate={{ rotate: 360 }}
-        transition={{ ease: 'linear', duration: 2, repeat: Infinity }}
+        whileHover={{ scale: 0.8 }}
       />
     </div>
   );
 }
 
-export default Spring;
+export default While_Hover;
