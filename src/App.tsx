@@ -5,10 +5,14 @@ import Spring from './animations/Spring';
 import './index.scss';
 import { Refresh } from './components/Refresh';
 import ShowAnimations from './components/ShowAnimations';
-import RepeatInfinite from './animations/Repeat_Infinite';
-import RepeatBackwards from './animations/Repeat_Backwards';
-import WhileHover from './animations/While_Hover';
+import Repeat_Infinite from './animations/Repeat_Infinite';
+import Repeat_Backwards from './animations/Repeat_Backwards';
+import While_Hover from './animations/While_Hover';
 import Presentation from './components/Presentation';
+import While_Tap from './animations/While_Tap';
+import While_Drag from './animations/While_Drag';
+import Cycle_States from './animations/Cycle_States';
+import Animation_Sequence from './animations/Animation_Sequence';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -46,9 +50,13 @@ function App() {
     const animations = [
       Tween,
       Spring,
-      RepeatInfinite,
-      RepeatBackwards,
-      WhileHover,
+      Repeat_Infinite,
+      Repeat_Backwards,
+      While_Hover,
+      While_Tap,
+      While_Drag,
+      Cycle_States,
+      Animation_Sequence,
     ];
 
     setAnimationComponents(animations);
@@ -60,7 +68,7 @@ function App() {
       <Presentation />
       <Refresh onClick={() => setCount(count + 1)} />
       <div className='flex justify-center mt-10 text-2xl font-semibold'>
-        {currentAnimationName}
+        {animationCount + 1} {currentAnimationName}
       </div>
       <ShowAnimations
         key={count}
