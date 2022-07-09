@@ -50,6 +50,7 @@ function App() {
       setCurrentAnimationName(name);
       return <Comp />;
     }
+    return null;
   };
 
   //handles forward and backwards errors
