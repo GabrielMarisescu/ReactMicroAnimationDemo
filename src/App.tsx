@@ -15,15 +15,15 @@ import Cycle_States from './animations/Cycle_States';
 import Animation_Sequence from './animations/Animation_Sequence';
 
 const animationComponents = {
-  'A nice tween': Tween,
+  'Tween Animation': Tween,
   'Spring animation': Spring,
-  'Repeat Infinite': Repeat_Infinite,
-  'Repeat Backwards': Repeat_Backwards,
-  'While Hover': While_Hover,
-  'While Tap': While_Tap,
-  'While Drag': While_Drag,
-  'Cycle States': Cycle_States,
-  'Animation Sequence': Animation_Sequence,
+  'Repeat Infinite Animation': Repeat_Infinite,
+  'Repeat Backwards Animation': Repeat_Backwards,
+  'While Hover Animation': While_Hover,
+  'While Tap Animation': While_Tap,
+  'While Drag Animation': While_Drag,
+  'Cycle States Animation': Cycle_States,
+  'Animation Sequence ': Animation_Sequence,
 };
 
 const animationsComponentsArr = Object.entries(animationComponents);
@@ -32,35 +32,35 @@ function App() {
   const [count, setCount] = useState(0);
   const [animationCount, setAnimationCount] = useState(0);
   const [currentAnimationName, setCurrentAnimationName] = useState<string>(
-    animationsComponentsArr?.[0]?.[0]
+    animationsComponentsArr[0]?.[0]
   );
 
   const forwardAnimation = (): void => {
-    setAnimationCount((prevData) => prevData + 1);
+    setAnimationCount((prevData) =>
+      prevData + 1 > animationsComponentsArr.length - 1 ? 0 : prevData + 1
+    );
   };
 
   const backwardAnimation = (): void => {
-    setAnimationCount((prevData) => prevData - 1);
+    setAnimationCount((prevData) =>
+      prevData - 1 < 0 ? animationsComponentsArr.length - 1 : prevData - 1
+    );
   };
+  const showAnimations = () => {
+    let index = Math.min(
+      Math.max(animationCount, 0),
+      animationsComponentsArr.length - 1
+    );
 
-  const showAnimations = (): any => {
-    const [name, Comp] = animationsComponentsArr?.[animationCount];
+    const item = animationsComponentsArr?.[index];
 
-    if (Comp) {
-      setCurrentAnimationName(name);
-      return <Comp />;
-    }
-    return null;
+    if (!item) return null;
+
+    const [name, Comp] = item;
+
+    setCurrentAnimationName(name);
+    return <Comp />;
   };
-
-  //handles forward and backwards errors
-  useEffect(() => {
-    if (animationCount === -1) {
-      setAnimationCount(animationsComponentsArr!.length - 1);
-    } else if (animationCount + 1 > animationsComponentsArr!?.length) {
-      setAnimationCount(0);
-    }
-  }, [animationCount]);
 
   return (
     <>
