@@ -7,6 +7,7 @@ React-Micro allows you to use a React Micro-Frontend which allows you to add and
 - Feel free to make pull requests or Issues.
 
 ## Preview
+<img width="1431" alt="Screenshot 2022-07-09 at 12 48 38" src="https://user-images.githubusercontent.com/43650393/178102529-20a5ba77-26ed-4b58-a337-86198d5f50ba.png">
 
 ## Contributing
 
