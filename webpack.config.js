@@ -4,7 +4,8 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 const deps = require('./package.json').dependencies;
 module.exports = {
   output: {
-    publicPath: 'https://react-micro-animation-demo.vercel.app/',
+    // publicPath: 'https://react-micro-animation-demo.vercel.app/',
+    publicPath: 'http://localhost:3000/',
   },
 
   resolve: {

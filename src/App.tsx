@@ -13,12 +13,14 @@ import While_Tap from './animations/While_Tap';
 import While_Drag from './animations/While_Drag';
 import Cycle_States from './animations/Cycle_States';
 import Animation_Sequence from './animations/Animation_Sequence';
+import { animationObject } from './interfaces/Main';
 
 function App() {
   const [count, setCount] = useState(0);
   const [animationCount, setAnimationCount] = useState(0);
   const [animationComponents, setAnimationComponents] =
-    useState<(() => JSX.Element)[]>();
+    useState<animationObject[]>();
+  //(() => JSX.Element)[]
   const [currentAnimationName, setCurrentAnimationName] = useState<string>();
 
   const forwardAnimation = (): void => {
@@ -32,10 +34,13 @@ function App() {
   const showAnimations = (): JSX.Element | void => {
     if (animationComponents && animationComponents[animationCount]) {
       setCurrentAnimationName(
-        animationComponents[animationCount].name.replace('_', ' ')
+        animationComponents[animationCount].keyName.replace('_', ' ')
       );
-      return React.createElement(animationComponents[animationCount]);
+      return React.createElement(
+        animationComponents[animationCount].actualComponent
+      );
     }
+    //objectAnimations
   };
   //handles forward and backwards errors
   useEffect(() => {
@@ -59,7 +64,12 @@ function App() {
       Animation_Sequence,
     ];
 
-    setAnimationComponents(animations);
+    const objectAnimations = animations.map((el) => {
+      return { keyName: el.name, actualComponent: el };
+    });
+
+    console.log(objectAnimations);
+    setAnimationComponents(objectAnimations);
     //if currentselection is more than animations.lengt, show error component
   }, []);
 
