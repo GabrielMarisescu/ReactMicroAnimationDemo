@@ -66,10 +66,10 @@ function App() {
   return (
     <>
       <Presentation />
-      <Refresh onClick={() => setCount(count + 1)} />
       <div className='flex justify-center mt-10 text-2xl font-semibold'>
         {animationCount + 1} {currentAnimationName}
       </div>
+      <Refresh onClick={() => setCount(count + 1)} />
       <ShowAnimations
         key={count}
         forwardAnimation={forwardAnimation}
