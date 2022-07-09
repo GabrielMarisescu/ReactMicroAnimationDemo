@@ -1,6 +1,6 @@
 # React-Micro Animation Demo
 
-React-Micro allows you to use a React Micro-Frontend which
+React-Micro allows you to use a React Micro-Frontend which allows you to add and demo FramerMotion Animations.
 
 - React-Micro Animation Demo will take you through a series of FramerMotion Animations.
 - Actively maintained by developers.
